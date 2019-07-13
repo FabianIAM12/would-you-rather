@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 import { TiArrowBackOutline } from 'react-icons/ti/index'
 import { TiHeartOutline } from 'react-icons/ti/index'
 import { TiHeartFullOutline } from 'react-icons/ti/index'
-import { handleToggleTweet } from "../actions/tweets";
 import { Link, withRouter } from 'react-router-dom'
 
 class AddQuestion extends Component {
@@ -47,4 +46,4 @@ function mapStateToProps ({authedUser, users, tweets}, { id }) {
     }*/
 }
 
-export default withRouter(connect(mapStateToProps)(Question))
+export default withRouter(connect(mapStateToProps)(AddQuestion))

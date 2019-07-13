@@ -1,27 +1,49 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Question from './Question'
+import {handleVoteQuestion} from "../actions/questions";
+
+function selectQuestion(questions) {
+    let items = [];
+    for (const item in questions) {
+        items.push(item)
+    }
+
+    const questionId = items[Math.floor(Math.random() * items.length)]
+    return questions[questionId]
+}
 
 class SelectPage extends Component {
+    handleLike = (option) => {
+        const { dispatch, questions, authedUser } = this.props;
+        dispatch(handleVoteQuestion({
+            qid: this.props.question.id,
+            answer: option,
+            authedUser: authedUser
+        }))
+    }
+
     render() {
-        const { id, replies } = this.props
-        return (<div>
-                    <h2>Select a question</h2>
-                    <Question/>
-                    <Question/>
-                </div>
-            )
+        const { question } = this.props
+
+        return (
+        <div>
+            <h3 className='center'>Your Timeline</h3>
+            <ul className='dashboard-list'>
+                <Question question={question} handleLike={this.handleLike}/>
+            </ul>
+        </div>
+        )
     }
 }
 
-function mapStateToProps ({ authedUser, tweets, users }, props) {
-    const { id } = props.match.params
+function mapStateToProps ({ questions, authedUser }) {
+    const question = selectQuestion(questions)
 
     return {
-        id,
-        replies: !tweets[id]
-            ? []
-            : tweets[id].replies.sort((a,b,) => tweets[b].timestamp - tweets[a].timestamp)
+        questions: questions,
+        question: question,
+        authedUser: authedUser,
     }
 }
 

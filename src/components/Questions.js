@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { TiArrowBackOutline } from 'react-icons/ti/index'
 import { TiHeartOutline } from 'react-icons/ti/index'
 import { TiHeartFullOutline } from 'react-icons/ti/index'
-import { handleToggleTweet } from "../actions/tweets";
+import { handleToggleTweet } from "../actions/questions";
 import { Link, withRouter } from 'react-router-dom'
 
 class Questions extends Component {
