@@ -1,49 +1,80 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-// import { formatTweet, formatDate } from "../utils/helpers";
-import { TiArrowBackOutline } from 'react-icons/ti/index'
-import { TiHeartOutline } from 'react-icons/ti/index'
-import { TiHeartFullOutline } from 'react-icons/ti/index'
-import { Link, withRouter } from 'react-router-dom'
+import { handleAddQuestion } from '../actions/questions'
+import { Redirect } from 'react-router-dom'
 
-class AddQuestion extends Component {
-    handleLike = (e) => {
+class addQuestion extends Component {
+    state = {
+        answerOne: '',
+        answerTwo: '',
+        toHome: false,
+    };
+
+    handleChangeOne = (e) => {
+        const text = e.target.value
+
+        this.setState(() => ({
+                answerOne: text
+            })
+        )
+    }
+
+    handleChangeTwo = (e) => {
+        const text = e.target.value
+
+        this.setState(() => ({
+            answerTwo: text
+            })
+        )
+    }
+
+    handleSubmit = (e) => {
         e.preventDefault()
 
-        console.log('handled');
+        const { answerOne, answerTwo } = this.state
+        const { dispatch, id } = this.props
 
-        // const { dispatch, tweet, authedUser } = this.props
+        dispatch(handleAddQuestion(answerOne, answerTwo))
 
-        /*
-        dispatch(handleToggleTweet({
-            id: tweet.id,
-            hasLiked: tweet.hasLikes,
-            authedUser
+        this.setState(() => ({
+            answerOne: '',
+            answerTwo: '',
+            toHome: id ? false : true,
         }))
-         */
     }
 
     render() {
+        const { answerOne, answerTwo, toHome } = this.state
+
+        if (toHome === true) {
+            return <Redirect to='/' />
+        }
+
         return (
-            <div className="selection-button">
-            <a href="#" onClick={this.handleLike}>
-                Click me
-            </a>
+            <div>
+                <h3 className='center'>Compose new Poll</h3>
+                <form className='new-tweet' onSubmit={this.handleSubmit}>
+                    <textarea placeholder="Answer 1"
+                              value={answerOne}
+                              onChange={this.handleChangeOne}
+                              className='textarea'
+                    />
+                    <textarea placeholder="Answer 2"
+                              value={answerTwo}
+                              onChange={this.handleChangeTwo}
+                              className='textarea'
+                    />
+                    <button
+                        className='btn'
+                        type='submit'
+                        disabled={answerOne === '' || answerTwo === ''}
+                    >
+                        Submit
+                    </button>
+                </form>
             </div>
         )
     }
 }
 
-function mapStateToProps ({authedUser, users, tweets}, { id }) {
-    /*
-    const tweet = tweets[id]
-    const parentTweet = tweet ? tweets[tweet.replyingTo] : null
-    return {
-        authedUser,
-        tweet: tweet
-            ? formatTweet(tweet, users[tweet.author], authedUser, parentTweet)
-            : null
-    }*/
-}
-
-export default withRouter(connect(mapStateToProps)(AddQuestion))
+export default connect()(addQuestion)

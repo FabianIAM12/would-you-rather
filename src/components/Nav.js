@@ -11,8 +11,8 @@ export default function Nav () {
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink to='/points' activeClassName='active'>
-                    Punkte
+                    <NavLink to='/add' exact activeClassName='active'>
+                    Add new Poll
                     </NavLink>
                 </li>
             </ul>

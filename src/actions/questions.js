@@ -3,6 +3,15 @@ import {saveQuestion, saveQuestionAnswer} from "../api";
 
 export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS'
 export const VOTE_QUESTION = 'VOTE_QUESTION'
+export const ADD_QUESTION = 'ADD_QUESTION'
+
+function addQuestion(question){
+    return {
+        type: ADD_QUESTION,
+        question,
+    }
+}
+
 
 export function receiveQuestions (questions) {
     return {
@@ -20,12 +29,26 @@ function voteQuestion({ qid, authedUser, answer }){
     }
 }
 
+export function handleAddQuestion(optionOneText, optionTwoText) {
+    return (dispatch, getState) => {
+        const { authedUser } = getState()
+
+        dispatch(showLoading())
+
+        return saveQuestion({
+            author: authedUser,
+            optionOneText: optionOneText,
+            optionTwoText: optionTwoText
+        })
+        .then((question) => dispatch(addQuestion(question)))
+        .then(() => {
+            hideLoading() }
+        )
+    }
+}
 
 export function handleVoteQuestion (info) {
     return (dispatch) => {
-        console.log('---');
-        console.log(info);
-        console.log('---');
         dispatch(voteQuestion(info))
 
         return saveQuestionAnswer(info)

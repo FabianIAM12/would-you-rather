@@ -15,7 +15,7 @@ function selectQuestion(questions) {
 
 class SelectPage extends Component {
     handleLike = (option) => {
-        const { dispatch, questions, authedUser } = this.props;
+        const { dispatch, authedUser } = this.props;
         dispatch(handleVoteQuestion({
             qid: this.props.question.id,
             answer: option,

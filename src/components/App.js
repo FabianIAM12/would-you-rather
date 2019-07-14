@@ -4,6 +4,7 @@ import { handleInitialData } from '../actions/shared'
 import LoadingBar from 'react-redux-loading'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import SelectPage from "./SelectPage";
+import AddQuestion from "./AddQuestion";
 import Nav from './Nav'
 
 class App extends Component {
@@ -20,9 +21,9 @@ class App extends Component {
                         {this.props.loading === true ? null :
                         <div>
                             <Route path='/' exact component={SelectPage}/>
+                            <Route path='/add' component={AddQuestion}/>
                             {/*
                             <Route path='/questions/:question_id' component={Questions}/>
-                            <Route path='/add' component={AddQuestion}/>
                             <Route path='/leaderboard' component={Leaderboard}/>
                             */}
                         </div>}
