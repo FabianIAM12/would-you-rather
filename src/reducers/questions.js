@@ -9,10 +9,9 @@ export default function questions (state = {}, action) {
             }
         case VOTE_QUESTION :
             return {
-                ...state
+                ...state,
             }
         case ADD_QUESTION :
-            /* todo: understand this */
             return {
                 ...state,
                 [action.question.id]: action.question,

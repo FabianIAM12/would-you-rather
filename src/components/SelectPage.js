@@ -28,7 +28,7 @@ class SelectPage extends Component {
 
         return (
         <div>
-            <h3 className='center'>Your Timeline</h3>
+            <h3 className='center'>Was möchtest du?</h3>
             <ul className='dashboard-list'>
                 <Question question={question} handleLike={this.handleLike}/>
             </ul>

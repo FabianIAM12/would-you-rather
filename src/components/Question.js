@@ -23,11 +23,11 @@ class Question extends Component {
         return (
             <div className='question'>
                 <h2>Frage</h2>
-                    <a href="#" onClick={this.handleLikeOne}>{ question.optionOne.text }
+                    <a href="#" onClick={this.handleLikeOne}>{ question.optionOne.text } Votet by: {question.optionOne.votes.length}
                     </a>
                     <br/>
                     <br/>
-                    <a href="#" onClick={this.handleLikeTwo}>{ question.optionTwo.text }
+                    <a href="#" onClick={this.handleLikeTwo}>{ question.optionTwo.text } Votet by: {question.optionOne.votes.length}
                     </a>
             </div>
         )
