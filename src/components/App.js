@@ -7,6 +7,7 @@ import SelectPage from "./SelectPage";
 import AddQuestion from "./AddQuestion";
 import Nav from './Nav'
 import QuestionDetail from "./QuestionDetail";
+import HighScore from "./HighScore";
 
 class App extends Component {
     componentDidMount() {
@@ -24,6 +25,7 @@ class App extends Component {
                             <Route path='/' exact component={SelectPage}/>
                             <Route path='/add' component={AddQuestion}/>
                             <Route path='/question/:question_id' component={QuestionDetail}/>
+                            <Route path='/highscore' component={HighScore}/>
                             {/*
                             <Route path='/leaderboard' component={Leaderboard}/>
                             */}

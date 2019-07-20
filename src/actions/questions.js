@@ -1,5 +1,6 @@
 import { showLoading, hideLoading } from "react-redux-loading";
 import {saveQuestion, saveQuestionAnswer} from "../api";
+import {addAnswerToUser, addQuestionToUser} from "./users";
 
 export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS'
 export const VOTE_QUESTION = 'VOTE_QUESTION'
@@ -24,8 +25,8 @@ function voteQuestion({ qid, authedUser, answer }){
     return {
         type: VOTE_QUESTION,
         qid,
-        answer,
-        authedUser
+        authedUser,
+        answer
     }
 }
 
@@ -40,7 +41,10 @@ export function handleAddQuestion(optionOneText, optionTwoText) {
             optionOneText: optionOneText,
             optionTwoText: optionTwoText
         })
-        .then((question) => dispatch(addQuestion(question)))
+        .then((question) => {
+            dispatch(addQuestion(question))
+            dispatch(addQuestionToUser(question, authedUser))
+        })
         .then(() => hideLoading())
     }
 }
@@ -48,6 +52,7 @@ export function handleAddQuestion(optionOneText, optionTwoText) {
 export function handleVoteQuestion (info) {
     return (dispatch) => {
         dispatch(voteQuestion(info))
+        dispatch(addAnswerToUser(info))
 
         return saveQuestionAnswer(info)
             .catch((e) => {

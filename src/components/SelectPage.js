@@ -42,8 +42,6 @@ class SelectPage extends Component {
 }
 
 function mapStateToProps ({ questions, authedUser }) {
-    const question = selectQuestion(questions)
-
     return {
         questionsIds: Object.keys(questions),
         questions: questions,

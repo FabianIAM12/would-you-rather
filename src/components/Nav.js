@@ -15,6 +15,11 @@ export default function Nav () {
                     Add new Poll
                     </NavLink>
                 </li>
+                <li>
+                    <NavLink to='/highscore' exact activeClassName='active'>
+                    Highscore
+                    </NavLink>
+                </li>
             </ul>
         </nav>
     )
