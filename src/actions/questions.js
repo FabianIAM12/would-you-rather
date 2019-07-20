@@ -41,9 +41,7 @@ export function handleAddQuestion(optionOneText, optionTwoText) {
             optionTwoText: optionTwoText
         })
         .then((question) => dispatch(addQuestion(question)))
-        .then(() => {
-            hideLoading() }
-        )
+        .then(() => hideLoading())
     }
 }
 
@@ -55,7 +53,7 @@ export function handleVoteQuestion (info) {
             .catch((e) => {
                 console.warn('Error in vote Question: ', e)
                 dispatch(voteQuestion(info))
-                alert('this was an error on voting in the tweet. Try again.');
+                alert('this was an error on voting in the question. Try again.');
         })
     }
 }

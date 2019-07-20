@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import Question from './Question'
+import QuestionOverview from './QuestionOverview'
 import {handleVoteQuestion} from "../actions/questions";
 
 function selectQuestion(questions) {
@@ -24,13 +24,17 @@ class SelectPage extends Component {
     }
 
     render() {
-        const { question } = this.props
+        const { questions } = this.props
 
         return (
         <div>
             <h3 className='center'>Was möchtest du?</h3>
             <ul className='dashboard-list'>
-                <Question question={question} handleLike={this.handleLike}/>
+                {this.props.questionsIds.map((id) => (
+                    <li key={id}>
+                        <QuestionOverview question={questions[id]}/>
+                    </li>
+                ))}
             </ul>
         </div>
         )
@@ -41,8 +45,8 @@ function mapStateToProps ({ questions, authedUser }) {
     const question = selectQuestion(questions)
 
     return {
+        questionsIds: Object.keys(questions),
         questions: questions,
-        question: question,
         authedUser: authedUser,
     }
 }
