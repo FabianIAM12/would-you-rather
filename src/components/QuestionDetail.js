@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import {handleAddQuestion, handleVoteQuestion} from '../actions/questions'
-import { Redirect } from 'react-router-dom'
-import Percentage from "./Percentage";
+import {handleVoteQuestion} from '../actions/questions'
+import {Link, Redirect} from 'react-router-dom'
+import Box from "@material-ui/core/Box";
+import Button from "@material-ui/core/Button";
 
 class QuestionDetail extends Component {
     state = {
@@ -39,15 +40,17 @@ class QuestionDetail extends Component {
         }
 
         return (
-            <div>
+            <Box color="white" bgcolor="palevioletred" width="50%">
                 <h3 className='center'>Question Detail</h3>
-                    <a href="#" onClick={this.handleLikeOne}>{ question.optionOne.text } Votet by: {question.optionOne.votes.length}
-                    </a>
-                <Percentage mainVotes={question.optionOne.votes.length} restVotes={question.optionTwo.votes.length}/>
-                    <a href="#" onClick={this.handleLikeTwo}>{ question.optionTwo.text } Votet by: {question.optionTwo.votes.length}
-                    </a>
-                <Percentage mainVotes={question.optionTwo.votes.length} restVotes={question.optionOne.votes.length}/>
-            </div>
+                    <h2>{ question.optionOne.text }</h2>
+                    <Link to={`/result/${question.id}`} onClick={this.handleLikeOne}>
+                        <Button variant="contained">Vote!</Button>
+                    </Link>
+                    <h2>{ question.optionTwo.text }</h2>
+                    <Link to={`/result/${question.id}`} onClick={this.handleLikeTwo}>
+                        <Button variant="contained">Vote!</Button>
+                    </Link>
+            </Box>
         )
     }
 }

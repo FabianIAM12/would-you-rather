@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import {Link, withRouter} from 'react-router-dom'
+import Button from "@material-ui/core/Button";
+import Box from "@material-ui/core/Box";
 
 class QuestionOverview extends Component {
 
@@ -8,17 +10,14 @@ class QuestionOverview extends Component {
         const { question } = this.props
 
         return (
-            <div className='question'>
-                <h2>Frage</h2>
-                <div className='profile'>
-                </div>
+            <Box color="white" bgcolor="palevioletred">
                 { question.optionOne.text } ... or
                 <div className="selection-button">
                     <Link to={`/question/${question.id}`} className='questionAnswer'>
-                        <h2>Click me</h2>
+                        <Button variant="contained">Answer me!</Button>
                     </Link>
                 </div>
-            </div>
+            </Box>
         )
     }
 }
