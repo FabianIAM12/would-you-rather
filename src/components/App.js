@@ -9,6 +9,7 @@ import Nav from './Nav'
 import QuestionDetail from "./QuestionDetail";
 import HighScore from "./HighScore";
 import QuestionResult from "./QuestionResult";
+import SelectPageAnswered from "./SelectPageAnswered";
 
 class App extends Component {
     componentDidMount() {
@@ -24,6 +25,7 @@ class App extends Component {
                         {this.props.loading === true ? null :
                         <div>
                             <Route path='/' exact component={SelectPage}/>
+                            <Route path='/answered' exact component={SelectPageAnswered}/>
                             <Route path='/add' component={AddQuestion}/>
                             <Route path='/question/:question_id' component={QuestionDetail}/>
                             <Route path='/result/:question_id' component={QuestionResult}/>

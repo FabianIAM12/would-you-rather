@@ -22,7 +22,7 @@ class UserProfile extends Component {
         return (
             <div className='userProfile'>
                 <h2>{user.name}</h2>
-                <p>{user.avatarURL}</p>
+                <img src={process.env.PUBLIC_URL + /profiles/ + user.avatarURL} width={175}/>
                 <p>{questionsScore}</p>
                 <p>{numberOfAnswersScore}</p>
                 <p>{questionsScore + numberOfAnswersScore}</p>

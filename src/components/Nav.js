@@ -7,17 +7,22 @@ export default function Nav () {
             <ul>
                 <li>
                     <NavLink to='/' exact activeClassName='active'>
-                    Questions
+                        Open Questions
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink to='/answered' exact activeClassName='active'>
+                        Answered Questions
                     </NavLink>
                 </li>
                 <li>
                     <NavLink to='/add' exact activeClassName='active'>
-                    Add new Poll
+                        Add new Poll
                     </NavLink>
                 </li>
                 <li>
                     <NavLink to='/highscore' exact activeClassName='active'>
-                    Highscore
+                        Highscore
                     </NavLink>
                 </li>
             </ul>
