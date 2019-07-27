@@ -1,21 +1,20 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import {Link, withRouter} from 'react-router-dom'
-import QuestionOverview from "./QuestionOverview";
+import React, {Component} from 'react'
+import {connect} from 'react-redux'
+import {withRouter} from 'react-router-dom'
 import UserProfile from "./UserProfile";
 
 class HighScore extends Component {
 
+
     render() {
-        const { users, userIds, authedUser } = this.props
+        const {users} = this.props;
 
         return (
             <div className='highscore'>
-                <h2>Frage</h2>
+                <h2>Highscore</h2>
 
-                {this.props.userIds.map((id) => (
-                    <li key={id}>
-                        <UserProfile user={users[id]}/>
+                {this.props.userIds.map((name) => (
+                    <li key={name}><UserProfile user={users[name]}/>
                     </li>
                 ))}
 
@@ -24,7 +23,13 @@ class HighScore extends Component {
     }
 }
 
-function mapStateToProps ({authedUser, users}) {
+function mapStateToProps({authedUser, users}) {
+    const ordered = {};
+    Object.keys(users).sort().reverse().forEach(function(key) {
+        ordered[key] = users[key];
+    });
+    users = ordered;
+
     return {
         authedUser,
         users,

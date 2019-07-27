@@ -7,12 +7,7 @@ export default function Nav () {
             <ul>
                 <li>
                     <NavLink to='/' exact activeClassName='active'>
-                        Open Questions
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink to='/answered' exact activeClassName='active'>
-                        Answered Questions
+                        Would you rather?
                     </NavLink>
                 </li>
                 <li>
@@ -23,6 +18,11 @@ export default function Nav () {
                 <li>
                     <NavLink to='/highscore' exact activeClassName='active'>
                         Highscore
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink to='/logout' exact activeClassName='active'>
+                        Logout
                     </NavLink>
                 </li>
             </ul>

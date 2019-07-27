@@ -54,12 +54,13 @@ class addQuestion extends Component {
             <div>
                 <h3 className='center'>Compose new Poll</h3>
                 <form className='new-tweet' onSubmit={this.handleSubmit}>
-                    <textarea placeholder="Answer 1"
+                    <textarea placeholder="Question 1"
                               value={answerOne}
                               onChange={this.handleChangeOne}
                               className='textarea'
                     />
-                    <textarea placeholder="Answer 2"
+                    <br/>
+                    <textarea placeholder="Question 2"
                               value={answerTwo}
                               onChange={this.handleChangeTwo}
                               className='textarea'
@@ -69,7 +70,7 @@ class addQuestion extends Component {
                         type='submit'
                         disabled={answerOne === '' || answerTwo === ''}
                     >
-                        Submit
+                        Submit Question
                     </button>
                 </form>
             </div>

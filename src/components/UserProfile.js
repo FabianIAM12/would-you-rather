@@ -1,37 +1,31 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import {Link, withRouter} from 'react-router-dom'
-import QuestionOverview from "./QuestionOverview";
+import { withRouter } from 'react-router-dom';
+import ExampleComponent from "react-rounded-image";
 
 class UserProfile extends Component {
-
-    numberOfAnswers = (answers) => {
-        let i = 0;
-        for (const answer in answers) {
-            i += 1;
-        }
-        return i;
-    }
 
     render() {
         const { user } = this.props
 
-        const questionsScore = user.questions.length
-        const numberOfAnswersScore = this.numberOfAnswers(user.answers)
-
         return (
             <div className='userProfile'>
                 <h2>{user.name}</h2>
-                <img src={process.env.PUBLIC_URL + /profiles/ + user.avatarURL} width={175}/>
-                <p>{questionsScore}</p>
-                <p>{numberOfAnswersScore}</p>
-                <p>{questionsScore + numberOfAnswersScore}</p>
+                <ExampleComponent
+                    image={ process.env.PUBLIC_URL + /profiles/ + user.avatarURL }
+                    roundedColor="#321124"
+                    imageWidth="200"
+                    imageHeight="150"
+                    roundedSize="1"/>
+                <p>Total: { user.totalScore }</p>
+                <p>Questions made: { user.questionsCreated }</p>
+                <p>Questions answered: { user.questionsAnswered }</p>
             </div>
         )
     }
 }
 
-function mapStateToProps ({authedUser}) {
+function mapStateToProps ({ authedUser }) {
     return {
         authedUser
     }
