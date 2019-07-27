@@ -10,16 +10,18 @@ class UserProfile extends Component {
 
         return (
             <div className='userProfile'>
-                <h2>{user.name}</h2>
+                <h3>{user.name}</h3>
                 <ExampleComponent
                     image={ process.env.PUBLIC_URL + /profiles/ + user.avatarURL }
                     roundedColor="#321124"
                     imageWidth="200"
                     imageHeight="150"
+                    class="test"
                     roundedSize="1"/>
-                <p>Total: { user.totalScore }</p>
-                <p>Questions made: { user.questionsCreated }</p>
-                <p>Questions answered: { user.questionsAnswered }</p>
+                <br/>
+                <p>Total: { user.totalScore }<br/>
+                Questions made: { user.questionsCreated }<br/>
+                Questions answered: { user.questionsAnswered }</p>
             </div>
         )
     }

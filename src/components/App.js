@@ -9,9 +9,8 @@ import Nav from './Nav'
 import QuestionDetail from "./QuestionDetail";
 import HighScore from "./HighScore";
 import QuestionResult from "./QuestionResult";
-import SelectPageAnswered from "./SelectPageAnswered";
 import Login from "./Login";
-import Logout from "./Logout";
+import { Grid } from 'semantic-ui-react';
 
 class App extends Component {
     componentDidMount() {
@@ -19,7 +18,7 @@ class App extends Component {
     }
 
     render() {
-        let { authedUser } = this.props;
+        let {authedUser} = this.props;
 
         return (
             <Router>
@@ -28,21 +27,22 @@ class App extends Component {
                     {authedUser === null ? (
                         <Route render={() => (
                             <Login/>
-                        )}
-                        />
+                        )}/>
                     ) : (
                         <Fragment>
                             <Nav/>
-                            {this.props.loading === true ? null :
+                            <Grid textAlign='center' verticalAlign='middle'>
+                                <Grid.Column style={{ maxWidth: 450 }}>
+                                {this.props.loading === true ? null :
                                 <div>
                                     <Route path='/' exact component={SelectPage}/>
-                                    <Route path='/answered' exact component={SelectPageAnswered}/>
                                     <Route path='/add' component={AddQuestion}/>
                                     <Route path='/question/:question_id' component={QuestionDetail}/>
                                     <Route path='/result/:question_id' component={QuestionResult}/>
                                     <Route path='/highscore' component={HighScore}/>
-                                    <Route path='/logout' component={Logout}/>
                                 </div>}
+                                </Grid.Column>
+                            </Grid>
                         </Fragment>
                     )}
                 </div>

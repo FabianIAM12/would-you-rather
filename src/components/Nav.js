@@ -20,11 +20,6 @@ export default function Nav () {
                         Highscore
                     </NavLink>
                 </li>
-                <li>
-                    <NavLink to='/logout' exact activeClassName='active'>
-                        Logout
-                    </NavLink>
-                </li>
             </ul>
         </nav>
     )

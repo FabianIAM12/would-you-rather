@@ -12,7 +12,7 @@ let users = {
     questions: ['8xf0y6ziyjabvozdd253nd', 'am8ehyc8byjqgar0jgpub9']
   },
   cat: {
-    id: 'catstevens',
+    id: 'cat',
     name: 'Cat Stevens',
     avatarURL: 'cat.jpg',
     answers: {
@@ -22,7 +22,7 @@ let users = {
     questions: ['loxhs1bqm25b708cmbf3g', 'vthrdm985a262al8qx3do'],
   },
   eagle: {
-    id: 'eddyeagle',
+    id: 'eagle',
     name: 'Eddy Eagle',
     avatarURL: 'eagle.jpg',
     answers: {

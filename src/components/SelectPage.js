@@ -2,25 +2,15 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import QuestionOverview from './QuestionOverview'
 import {handleVoteQuestion} from "../actions/questions";
-import Button from "@material-ui/core/Button";
-import Link from "@material-ui/core/Link";
 
 class SelectPage extends Component {
-    handleLike = (option) => {
-        const { dispatch, authedUser } = this.props;
-        dispatch(handleVoteQuestion({
-            qid: this.props.question.id,
-            answer: option,
-            authedUser: authedUser
-        }))
-    }
 
     render() {
-        const { questions } = this.props
+        const { questions, authedUser, users } = this.props
 
         return (
             <div>
-                <h3 className='center'>Would you rather?</h3>
+                <h2 className='center'>{users[authedUser].name} would you rather?</h2>
                 <ul className='dashboard-list'>
                     {this.props.questionsIds.map((id) => (
                         <li key={id}>
@@ -33,11 +23,34 @@ class SelectPage extends Component {
     }
 }
 
-function mapStateToProps ({ questions, authedUser }) {
+function mapStateToProps ({ questions, authedUser, users }) {
+
+    Object.keys(questions)
+        .forEach(key => {
+            let deleteIt = false;
+
+            // iterate through given answers
+            for (const answer in users[authedUser].answers) {
+                if (answer === questions[key].id) {
+                    deleteIt = true;
+                }
+            }
+
+            // delete answers of the author
+            if (!deleteIt && questions[key] !== undefined && authedUser === questions[key].author){
+                deleteIt = true;
+            }
+
+            if (deleteIt){
+                delete questions[key];
+            }
+        });
+
     return {
         questionsIds: Object.keys(questions),
         questions: questions,
         authedUser: authedUser,
+        users: users,
     }
 }
 

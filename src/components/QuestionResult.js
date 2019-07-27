@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Percentage from "./Percentage";
+import GooglePieChart from "./GooglePieChart";
 import {Link} from "react-router-dom";
 import Button from "@material-ui/core/Button";
 
@@ -8,13 +9,21 @@ class QuestionResult extends Component {
     render() {
         const { question } = this.props
 
+        const data = [
+            [question.optionOne.text, question.optionTwo.text],
+            [question.optionOne.text, question.optionOne.votes.length],
+            [question.optionTwo.text, question.optionTwo.votes.length],
+        ];
+
         return (
-            <div>
-                <Percentage mainVotes={question.optionOne.votes.length} restVotes={question.optionTwo.votes.length}/>
-                <Percentage mainVotes={question.optionTwo.votes.length} restVotes={question.optionOne.votes.length}/>
-                <Link to={`/`}>
-                    <Button variant="contained">Go back!</Button>
-                </Link>
+            <div className="ui link cards">
+                <div className="card">
+                    <GooglePieChart data={data}/>
+                    <Percentage mainVotes={question.optionOne.votes.length} restVotes={question.optionTwo.votes.length}/>
+                    <Link to={`/`}>
+                        <Button variant="contained">Go back!</Button>
+                    </Link>
+                </div>
             </div>
             )
     }

@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
+import React, {Component} from 'react'
+import {connect} from 'react-redux'
 import {handleVoteQuestion} from '../actions/questions'
-import {Link, Redirect} from 'react-router-dom'
-import Box from "@material-ui/core/Box";
+import {Redirect} from 'react-router-dom'
+import Link from "@material-ui/core/Link";
 import Button from "@material-ui/core/Button";
 
 class QuestionDetail extends Component {
@@ -11,55 +11,71 @@ class QuestionDetail extends Component {
     };
 
     handleLike = (option) => {
-        const { dispatch, authedUser } = this.props;
+        const {dispatch, authedUser} = this.props;
         dispatch(handleVoteQuestion({
             qid: this.props.question.id,
             answer: option,
             authedUser: authedUser
-        }))
+        }));
 
         this.setState(() => ({
-            toHome: true
+            toResult: true
         }))
-    }
+    };
 
     handleLikeOne = () => {
         this.handleLike('optionOne');
-    }
+    };
 
     handleLikeTwo = () => {
         this.handleLike('optionTwo');
-    }
+    };
 
     render() {
-        const { question } = this.props
-        const { toHome } = this.state
+        const {question} = this.props;
+        const {toResult} = this.state;
 
-        if (toHome === true) {
-            return <Redirect to='/' />
+        const redirectUrl = '/result/' + question.id;
+
+        if (toResult === true) {
+            return <Redirect to={redirectUrl}/>
         }
 
         return (
-            <Box color="white" bgcolor="palevioletred" width="50%">
-                <h3 className='center'>Question Detail</h3>
-                    <h2>{ question.optionOne.text }</h2>
-                    <Link to={`/result/${question.id}`} onClick={this.handleLikeOne}>
-                        <Button variant="contained">Vote!</Button>
-                    </Link>
-                    <h2>{ question.optionTwo.text }</h2>
-                    <Link to={`/result/${question.id}`} onClick={this.handleLikeTwo}>
-                        <Button variant="contained">Vote!</Button>
-                    </Link>
-            </Box>
+            <div className="ui link cards">
+                <div className="card">
+                    <div className="content">
+                        <h3>{ question.optionOne.text }</h3>
+                    </div>
+                    <div className="extra content">
+                        <Link to={`/result/${question.id}`} onClick={this.handleLikeOne}>
+                            <Button variant="contained">Vote!</Button>
+                        </Link>
+                    </div>
+                </div>
+
+                <div className="card">
+                    <div className="content">
+                        <h3>{ question.optionTwo.text }</h3>
+                    </div>
+                    <div className="extra content">
+                        <Link to={`/result/${question.id}`} onClick={this.handleLikeTwo}>
+                            <Button variant="contained">Vote!</Button>
+                        </Link>
+                    </div>
+                </div>
+            </div>
         )
     }
 }
 
-function mapStateToProps ({ questions, authedUser }, props) {
-    const { question_id } = props.match.params
-    const question = questions[question_id]
-    return { question,
-            authedUser: authedUser }
+function mapStateToProps({questions, authedUser}, props) {
+    const {question_id} = props.match.params;
+    const question = questions[question_id];
+    return {
+        question,
+        authedUser: authedUser
+    }
 }
 
 export default connect(mapStateToProps)(QuestionDetail)

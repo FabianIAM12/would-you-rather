@@ -6,10 +6,11 @@ class Percentage extends Component {
     render() {
         const { mainVotes, restVotes } = this.props
 
-        return (
-            <div className='percentage'>
-                <NumberFormat value={mainVotes * 100 / (mainVotes + restVotes)} format="#####" displayType={'text'}/>%
-            </div>
+        return (<div>
+                    <NumberFormat value={mainVotes * 100 / (mainVotes + restVotes)} format="#####%" displayType={'text'}/>
+                    <span> vs. </span>
+                     <NumberFormat value={restVotes * 100 / (mainVotes + restVotes)} format="#####%" displayType={'text'}/>
+                </div>
         )
     }
 }

@@ -5,7 +5,6 @@ export default function users (state={}, action){
 
     switch (action.type) {
         case RECEIVE_USERS :
-
             // Adding the calculated values to have them available globally
             Object.keys(action.users).forEach(function(user){
                 action.users[user]['questionsCreated'] = action.users[user].questions.length;
@@ -32,6 +31,7 @@ export default function users (state={}, action){
             };
         case ADD_ANSWER_TO_USER :
             const { qid, answer, authedUser } = action
+
             return {
                 ...state,
                 [authedUser]: {

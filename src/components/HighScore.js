@@ -4,8 +4,6 @@ import {withRouter} from 'react-router-dom'
 import UserProfile from "./UserProfile";
 
 class HighScore extends Component {
-
-
     render() {
         const {users} = this.props;
 

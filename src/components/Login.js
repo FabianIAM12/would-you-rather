@@ -1,10 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {setAuthedUser} from "../actions/authedUser";
-import {
-    Header,
-    Form
-} from 'semantic-ui-react';
+import { Grid, Header, Image, Form } from 'semantic-ui-react';
 
 class Login extends Component {
     state = {
@@ -16,7 +13,6 @@ class Login extends Component {
     };
 
     handleLogin = (e) => {
-        console.log(e);
         e.preventDefault();
         const {dispatch} = this.props;
         dispatch(setAuthedUser(this.state.value));
@@ -38,21 +34,26 @@ class Login extends Component {
         const disabled = value === '' ? true : false;
 
         return (
-            <Form onSubmit={this.handleLogin}>
-                <Header as="h2" color="green">
-                    Sign In
-                </Header>
-                <Form.Dropdown
-                    placeholder="Select User"
-                    fluid
-                    selection
-                    scrolling
-                    options={this.prepareData()}
-                    value={value}
-                    onChange={this.onChange}
-                    required/>
-                <Form.Button content="Login" positive disabled={disabled} fluid />
-            </Form>
+            <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
+                <Grid.Column style={{ maxWidth: 450 }}>
+                    <Header as='h1' color='orange' textAlign='center'>
+                        <Image src='/logo.png' /><br/>Log-in to your account
+                    </Header>
+                    <Form onSubmit={this.handleLogin}>
+                        <Form.Dropdown
+                            placeholder="Select User"
+                            fluid
+                            selection
+                            scrolling
+                            options={this.prepareData()}
+                            value={value}
+                            onChange={this.onChange}
+                            required/>
+                        <Form.Button content="Login" positive disabled={disabled} fluid color='orange'/>
+                    </Form>
+                </Grid.Column>
+            </Grid>
+
         )
     }
 }
