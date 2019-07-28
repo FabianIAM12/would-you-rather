@@ -1,7 +1,8 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { handleAddQuestion } from '../actions/questions'
-import { Redirect } from 'react-router-dom'
+import React, {Component} from 'react'
+import {connect} from 'react-redux'
+import {handleAddQuestion} from '../actions/questions'
+import {Redirect} from 'react-router-dom'
+import Button from "@material-ui/core/Button";
 
 class addQuestion extends Component {
     state = {
@@ -11,48 +12,48 @@ class addQuestion extends Component {
     };
 
     handleChangeOne = (e) => {
-        const text = e.target.value
+        const text = e.target.value;
 
         this.setState(() => ({
                 answerOne: text
             })
         )
-    }
+    };
 
     handleChangeTwo = (e) => {
-        const text = e.target.value
+        const text = e.target.value;
 
         this.setState(() => ({
-            answerTwo: text
+                answerTwo: text
             })
         )
-    }
+    };
 
     handleSubmit = (e) => {
-        e.preventDefault()
+        e.preventDefault();
 
-        const { answerOne, answerTwo } = this.state
-        const { dispatch, id } = this.props
+        const {answerOne, answerTwo} = this.state;
+        const {dispatch, id} = this.props;
 
-        dispatch(handleAddQuestion(answerOne, answerTwo))
+        dispatch(handleAddQuestion(answerOne, answerTwo));
 
         this.setState(() => ({
             answerOne: '',
             answerTwo: '',
             toHome: id ? false : true,
         }))
-    }
+    };
 
     render() {
-        const { answerOne, answerTwo, toHome } = this.state
+        const {answerOne, answerTwo, toHome} = this.state;
 
         if (toHome === true) {
-            return <Redirect to='/' />
+            return <Redirect to='/'/>
         }
 
         return (
             <div>
-                <h3 className='center'>Compose new Poll</h3>
+                <h3 className='center'>Compose a new Poll</h3>
                 <form className='new-tweet' onSubmit={this.handleSubmit}>
                     <textarea placeholder="Question 1"
                               value={answerOne}
@@ -65,13 +66,9 @@ class addQuestion extends Component {
                               onChange={this.handleChangeTwo}
                               className='textarea'
                     />
-                    <button
-                        className='btn'
-                        type='submit'
-                        disabled={answerOne === '' || answerTwo === ''}
-                    >
-                        Submit Question
-                    </button>
+                    <br/>
+                    <Button variant="contained" type='submit' disabled={answerOne === '' || answerTwo === ''}>Add
+                        Question!</Button>
                 </form>
             </div>
         )

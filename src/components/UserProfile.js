@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom';
-import ExampleComponent from "react-rounded-image";
 
 class UserProfile extends Component {
 
@@ -9,19 +8,16 @@ class UserProfile extends Component {
         const { user } = this.props
 
         return (
-            <div className='userProfile'>
-                <h3>{user.name}</h3>
-                <ExampleComponent
-                    image={ process.env.PUBLIC_URL + /profiles/ + user.avatarURL }
-                    roundedColor="#321124"
-                    imageWidth="200"
-                    imageHeight="150"
-                    class="test"
-                    roundedSize="1"/>
-                <br/>
-                <p>Total: { user.totalScore }<br/>
-                Questions made: { user.questionsCreated }<br/>
-                Questions answered: { user.questionsAnswered }</p>
+            <div className="ui link cards">
+                <div className="card">
+                    <div className="image">
+                        <img src={ process.env.PUBLIC_URL + /profiles/ + user.avatarURL } alt={"profile"}/>
+                    </div>
+                    <div className="content">
+                        <div className="header">{ user.name }</div>
+                        <div className="meta">Total Score: { user.totalScore }<br/>Questions made: { user.questionsCreated }<br/>Questions answered: { user.questionsAnswered }</div>
+                    </div>
+                </div>
             </div>
         )
     }
@@ -29,7 +25,7 @@ class UserProfile extends Component {
 
 function mapStateToProps ({ authedUser }) {
     return {
-        authedUser
+        authedUser: authedUser
     }
 }
 

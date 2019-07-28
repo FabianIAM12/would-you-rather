@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom'
 import UserProfile from "./UserProfile";
+import Grid from "@material-ui/core/Grid";
 
 class HighScore extends Component {
     render() {
@@ -9,13 +10,14 @@ class HighScore extends Component {
 
         return (
             <div className='highscore'>
-                <h2>Highscore</h2>
-
-                {this.props.userIds.map((name) => (
-                    <li key={name}><UserProfile user={users[name]}/>
-                    </li>
-                ))}
-
+                <h3>Highscore</h3>
+                <Grid container spacing={5} alignItems="center" justify="center">
+                    {this.props.userIds.map((name) => (
+                        <Grid key={name} item xs={8}>
+                            <UserProfile user={users[name]} key={name}/>
+                        </Grid>
+                    ))}
+                </Grid>
             </div>
         )
     }
@@ -23,7 +25,7 @@ class HighScore extends Component {
 
 function mapStateToProps({authedUser, users}) {
     const ordered = {};
-    Object.keys(users).sort().reverse().forEach(function(key) {
+    Object.keys(users).sort().reverse().forEach(function (key) {
         ordered[key] = users[key];
     });
     users = ordered;

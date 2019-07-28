@@ -9,7 +9,7 @@ class Percentage extends Component {
         return (<div>
                     <NumberFormat value={mainVotes * 100 / (mainVotes + restVotes)} format="#####%" displayType={'text'}/>
                     <span> vs. </span>
-                     <NumberFormat value={restVotes * 100 / (mainVotes + restVotes)} format="#####%" displayType={'text'}/>
+                    <NumberFormat value={restVotes * 100 / (mainVotes + restVotes)} format="#####%" displayType={'text'}/>
                 </div>
         )
     }

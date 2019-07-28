@@ -8,12 +8,7 @@ export default function users (state={}, action){
             // Adding the calculated values to have them available globally
             Object.keys(action.users).forEach(function(user){
                 action.users[user]['questionsCreated'] = action.users[user].questions.length;
-
-                let i = 0;
-                for (const answer in action.users[user].answers) {
-                    i += 1;
-                }
-                action.users[user]['questionsAnswered'] = i;
+                action.users[user]['questionsAnswered'] = Object.values(action.users[user].answers).length;
                 action.users[user]['totalScore'] = action.users[user]['questionsAnswered'] + action.users[user]['questionsCreated'];
             });
 
