@@ -1,18 +1,18 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
+import React, {Component} from 'react'
+import {connect} from 'react-redux'
 import QuestionOverview from './QuestionOverview'
-import { Tab } from 'semantic-ui-react';
+import {Tab} from 'semantic-ui-react';
 
 class SelectPage extends Component {
 
     render() {
-        const { questions } = this.props;
-        return <Tab panes={panes({ questions })} className="tab" />;
+        const {questions} = this.props;
+        return <Tab panes={panes({questions})} className="tab"/>;
     }
 }
 
 const panes = props => {
-    const { questions} = props;
+    const {questions} = props;
     return [
         {
             menuItem: 'Unanswered (' + questions.unansweredQuestions.length + ')',
@@ -53,6 +53,7 @@ const panes = props => {
                             question={question}
                             hideVote={true}
                             hideAuthor={true}
+                            showFullQuestion={true}
                         />
                     ))}
                 </Tab.Pane>
@@ -61,7 +62,7 @@ const panes = props => {
     ];
 };
 
-function mapStateToProps ({ questions, authedUser, users }) {
+function mapStateToProps({questions, authedUser, users}) {
     const answeredQuestionsIds = Object.keys(users[authedUser].answers);
     const unansweredQuestions = Object.values(questions)
         .filter(question => !answeredQuestionsIds.includes(question.id))

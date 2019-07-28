@@ -7,7 +7,7 @@ class WelcomeMessage extends Component {
     render() {
         const { user } = this.props;
 
-        return (<span className='topProfileNaming'>Welcome, { user.name }</span>)
+        return (<span className='topProfileNaming'><i>Welcome, { user.name }!</i></span>)
     }
 }
 

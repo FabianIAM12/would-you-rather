@@ -1,8 +1,4 @@
 import React, {Component} from 'react'
-import {connect} from 'react-redux'
-import {withRouter} from 'react-router-dom'
-import UserProfile from "./UserProfile";
-import Grid from "@material-ui/core/Grid";
 
 class NoMatchExists extends Component {
     render() {

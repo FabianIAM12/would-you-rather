@@ -31,9 +31,9 @@ class QuestionOverview extends Component {
         if (showFullQuestion) {
             questionField = question.optionOne.text + ' or ' + question.optionTwo.text;
         }
-        if (showUserVote){
+        if (showUserVote) {
             const searchVote = question.optionOne.votes.filter(vote => vote === authedUser);
-            if (searchVote.length > 0){
+            if (searchVote.length > 0) {
                 voteText = question.optionOne.text;
             } else {
                 voteText += question.optionTwo.text;
@@ -47,7 +47,8 @@ class QuestionOverview extends Component {
                     <div className="ui link cards">
                         <div className="card">
                             <div className="image">
-                                <img src={process.env.PUBLIC_URL + /profiles/ + users[question.author].avatarURL} alt={"profile"}/>
+                                <img src={process.env.PUBLIC_URL + /profiles/ + users[question.author].avatarURL}
+                                     alt={"profile"}/>
                             </div>
                             <div className="content">
                                 <div className="header">{questionField}</div>

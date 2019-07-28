@@ -1,9 +1,8 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
-import ProfilePictureSmall from "./ProfilPictureSmall";
+import {NavLink} from 'react-router-dom'
 import WelcomeMessage from "./WelcomeMessage";
 
-export default function Nav () {
+export default function Nav() {
     return (
         <div className="ui secondary pointing menu">
             <NavLink to='/' exact activeClassName='active' className='item'>
@@ -18,9 +17,6 @@ export default function Nav () {
             <div className="right menu">
                 <div className="item">
                     <WelcomeMessage/>
-                </div>
-                <div className="item">
-                    <ProfilePictureSmall/>
                 </div>
                 <div className="item">
                     <div className="ui primary button">

@@ -5,7 +5,6 @@ import {Redirect} from 'react-router-dom'
 import Link from "@material-ui/core/Link";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
-import NoMatchExists from "./NoMatchExists";
 
 class QuestionDetail extends Component {
     state = {

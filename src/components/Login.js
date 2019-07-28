@@ -1,15 +1,15 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {setAuthedUser} from "../actions/authedUser";
-import { Grid, Header, Image, Form } from 'semantic-ui-react';
+import {Form, Grid, Header, Image} from 'semantic-ui-react';
 
 class Login extends Component {
     state = {
         value: ''
     };
 
-    onChange = (e, { value }) => {
-        this.setState({ value });
+    onChange = (e, {value}) => {
+        this.setState({value});
     };
 
     handleLogin = (e) => {
@@ -19,25 +19,25 @@ class Login extends Component {
     };
 
     prepareData = () => {
-        const { users } = this.props;
+        const {users} = this.props;
 
         return Object.values(users).map(user => ({
             key: user.id,
             text: user.name,
             value: user.id,
-            image: { avatar: true, src: process.env.PUBLIC_URL + /profiles/ + user.avatarURL }
+            image: {avatar: true, src: process.env.PUBLIC_URL + /profiles/ + user.avatarURL}
         }));
     };
 
     render() {
-        const { value } = this.state;
+        const {value} = this.state;
         const disabled = value === '' ? true : false;
 
         return (
-            <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
-                <Grid.Column style={{ maxWidth: 450 }}>
+            <Grid textAlign='center' style={{height: '100vh'}} verticalAlign='middle'>
+                <Grid.Column style={{maxWidth: 450}}>
                     <Header as='h1' color='orange' textAlign='center'>
-                        <Image src='/logo.png' /><br/>Log-in to your account
+                        <Image src='/logo.png'/><br/>Log-in to your account
                     </Header>
                     <Form onSubmit={this.handleLogin}>
                         <Form.Dropdown
@@ -58,7 +58,7 @@ class Login extends Component {
     }
 }
 
-function mapStateToProps({ authedUser, users}) {
+function mapStateToProps({authedUser, users}) {
     return {
         authedUser: authedUser,
         userIds: Object.keys(users),
