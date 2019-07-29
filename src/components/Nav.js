@@ -11,7 +11,7 @@ export default function Nav() {
             <NavLink to='/add' exact activeClassName='active' className='item'>
                 Add new Poll
             </NavLink>
-            <NavLink to='/highscore' exact activeClassName='active' className='item'>
+            <NavLink to='/leaderboard' exact activeClassName='active' className='item'>
                 Highscore
             </NavLink>
             <div className="right menu">

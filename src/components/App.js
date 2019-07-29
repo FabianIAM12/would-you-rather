@@ -42,10 +42,10 @@ class App extends Component {
                                                 <Route path='/' exact component={SelectPage}/>
                                                 <Route path='/add' component={AddQuestion}/>
                                                 <Route path='/questions/:question_id' component={QuestionDetail}/>
+                                                <Route path='/questions/notexisting' component={NoMatchExists}/>
                                                 <Route path='/result/:question_id' component={QuestionResult}/>
                                                 <Route path='/leaderboard' component={Leaderboard}/>
                                                 <Route path='/logout' component={Logout}/>
-                                                <Route path='/404' component={NoMatchExists}/>
                                                 <Route component={NoMatchExists}/>
                                             </Switch>
                                         </div>}
