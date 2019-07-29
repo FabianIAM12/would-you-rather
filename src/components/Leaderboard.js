@@ -4,7 +4,7 @@ import {withRouter} from 'react-router-dom'
 import UserProfile from "./UserProfile";
 import Grid from "@material-ui/core/Grid";
 
-class HighScore extends Component {
+class Leaderboard extends Component {
     render() {
         const {users} = this.props;
 
@@ -37,4 +37,4 @@ function mapStateToProps({authedUser, users}) {
     }
 }
 
-export default withRouter(connect(mapStateToProps)(HighScore))
+export default withRouter(connect(mapStateToProps)(Leaderboard))

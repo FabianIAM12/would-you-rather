@@ -7,12 +7,12 @@ import SelectPage from "./SelectPage";
 import AddQuestion from "./AddQuestion";
 import Nav from './Nav'
 import QuestionDetail from "./QuestionDetail";
-import HighScore from "./HighScore";
 import QuestionResult from "./QuestionResult";
 import Login from "./Login";
 import {Grid} from 'semantic-ui-react';
 import NoMatchExists from "./NoMatchExists";
 import Logout from "./Logout";
+import Leaderboard from "./Leaderboard";
 
 class App extends Component {
     componentDidMount() {
@@ -41,10 +41,11 @@ class App extends Component {
                                             <Switch>
                                                 <Route path='/' exact component={SelectPage}/>
                                                 <Route path='/add' component={AddQuestion}/>
-                                                <Route path='/question/:question_id' component={QuestionDetail}/>
+                                                <Route path='/questions/:question_id' component={QuestionDetail}/>
                                                 <Route path='/result/:question_id' component={QuestionResult}/>
-                                                <Route path='/highscore' component={HighScore}/>
+                                                <Route path='/leaderboard' component={Leaderboard}/>
                                                 <Route path='/logout' component={Logout}/>
+                                                <Route path='/404' component={NoMatchExists}/>
                                                 <Route component={NoMatchExists}/>
                                             </Switch>
                                         </div>}

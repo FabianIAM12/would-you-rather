@@ -1,4 +1,6 @@
 import React, {Component} from 'react'
+import {connect} from "react-redux";
+import {withRouter} from "react-router-dom";
 
 class NoMatchExists extends Component {
     render() {
@@ -10,4 +12,10 @@ class NoMatchExists extends Component {
     }
 }
 
-export default NoMatchExists;
+function mapStateToProps(authedUser) {
+    return {
+        authedUser
+    }
+}
+
+export default withRouter(connect(mapStateToProps)(NoMatchExists))

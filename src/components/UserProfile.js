@@ -5,7 +5,9 @@ import { withRouter } from 'react-router-dom';
 class UserProfile extends Component {
 
     render() {
-        const { user } = this.props
+        const { users, authedUser } = this.props
+
+        const user = users[authedUser];
 
         return (
             <div className="ui link cards">
@@ -23,9 +25,10 @@ class UserProfile extends Component {
     }
 }
 
-function mapStateToProps ({ authedUser }) {
+function mapStateToProps ({ authedUser, users }) {
     return {
-        authedUser: authedUser
+        authedUser: authedUser,
+        users: users,
     }
 }
 

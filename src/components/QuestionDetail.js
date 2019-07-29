@@ -36,8 +36,12 @@ class QuestionDetail extends Component {
         const {question} = this.props;
         const {toResult} = this.state;
 
-        const redirectUrl = '/result/' + question.id;
+        const notFoundUrl = '/404/';
+        if (question === undefined){
+            return <Redirect to={notFoundUrl}/>
+        }
 
+        const redirectUrl = '/result/' + question.id;
         if (toResult === true) {
             return <Redirect to={redirectUrl}/>
         }

@@ -19,7 +19,7 @@ class QuestionOverview extends Component {
             button =
                 <div className="extra content">
                     <div className="selection-button">
-                        <Link to={`/question/${question.id}`} className='questionAnswer'>
+                        <Link to={`/questions/${question.id}`} className='questionAnswer'>
                             <Button variant="contained">Answer me!</Button>
                         </Link>
                     </div>

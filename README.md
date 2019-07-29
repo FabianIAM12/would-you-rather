@@ -6,6 +6,11 @@ I built a React/Redux front end for the application.
 
 ## Quickstart
 To start install the npm packages and then use the npm start command. 
+### Installation
+```npm install```
+
+### Start Application
+``` npm start ```
 
 ## Data
 
