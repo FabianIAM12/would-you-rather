@@ -76,4 +76,4 @@ class addQuestion extends Component {
     }
 }
 
-export default addQuestion
+export default connect()(addQuestion)
