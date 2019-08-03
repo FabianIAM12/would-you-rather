@@ -4,13 +4,14 @@ import {withRouter} from 'react-router-dom'
 import UserProfile from "./UserProfile";
 import Grid from "@material-ui/core/Grid";
 
+
 class Leaderboard extends Component {
     render() {
         const {users} = this.props;
 
         return (
             <div className='highscore'>
-                <h3>Highscore</h3>
+                <h3>Leaderboard</h3>
                 <Grid container spacing={5} alignItems="center" justify="center">
                     {this.props.userIds.map((name) => (
                         <Grid key={name} item xs={8}>

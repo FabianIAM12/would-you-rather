@@ -36,7 +36,7 @@ class Login extends Component {
         return (
             <Grid textAlign='center' style={{height: '100vh'}} verticalAlign='middle'>
                 <Grid.Column style={{maxWidth: 450}}>
-                    <Header as='h1' color='orange' textAlign='center'>
+                    <Header as='h2' color='orange' textAlign='center'>
                         <Image src='/logo.png'/><br/>Log-in to your account
                     </Header>
                     <Form onSubmit={this.handleLogin}>

@@ -14,6 +14,7 @@ import NoMatchExists from "./NoMatchExists";
 import Logout from "./Logout";
 import Leaderboard from "./Leaderboard";
 
+
 class App extends Component {
     componentDidMount() {
         this.props.dispatch(handleInitialData())

@@ -4,6 +4,7 @@ import {Link, withRouter} from 'react-router-dom'
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 
+
 class QuestionOverview extends Component {
 
     render() {
@@ -25,6 +26,7 @@ class QuestionOverview extends Component {
                     </div>
                 </div>;
         }
+
         if (!hideAuthor) {
             authorName = <div className="meta">Asked by: {users[question.author].name}</div>;
         }
@@ -39,6 +41,15 @@ class QuestionOverview extends Component {
                 voteText += question.optionTwo.text;
             }
             vote = <div className="extra content"> Your Answer: {voteText}</div>;
+            button =
+                <div className="extra content">
+                    <div className="selection-button">
+                        <Link to={`/questions/${question.id}`} className='questionAnswer'>
+                            <Button variant="contained">Vote Details</Button>
+                        </Link>
+                        <br/>
+                    </div>
+                </div>;
         }
 
         return (

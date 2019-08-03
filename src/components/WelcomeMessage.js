@@ -1,15 +1,16 @@
-import React, {Component} from 'react'
+import React from 'react'
 import {connect} from 'react-redux'
 
 
-class WelcomeMessage extends Component {
+const WelcomeMessage = (props) => {
+    const {user} = props;
 
-    render() {
-        const { user } = this.props;
-
-        return (<span className='topProfileNaming'><i>Welcome, { user.name }!</i></span>)
-    }
-}
+    return(
+        <span className='topProfileNaming'>
+            <i>Welcome, { user.name }!</i>
+        </span>
+    )
+};
 
 function mapStateToProps({users, authedUser}) {
 

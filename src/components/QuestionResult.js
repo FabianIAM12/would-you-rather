@@ -1,49 +1,45 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
+import React, {Component} from 'react'
 import Percentage from "./Percentage";
 import GooglePieChart from "./GooglePieChart";
+import Grid from "@material-ui/core/Grid";
 import {Link} from "react-router-dom";
 import Button from "@material-ui/core/Button";
-import Grid from "@material-ui/core/Grid";
+import {connect} from "react-redux";
+
 
 class QuestionResult extends Component {
     render() {
-        const { question } = this.props
-
-        const data = [
-            [question.optionOne.text, question.optionTwo.text],
-            [question.optionOne.text, question.optionOne.votes.length],
-            [question.optionTwo.text, question.optionTwo.votes.length],
-        ];
+        const {question, data, authedUser, users} = this.props;
+        const choiceText = (question[users[authedUser]['answers'][question.id]].text);
 
         return (
-            <Grid container spacing={5} alignItems="center" justify="center">
-                <Grid item xs={8}>
-                    <div className="ui link cards">
-                        <div className="card">
-                            <h3 style={{marginTop: 10}}>Voting Result</h3>
-                            <i style={{margin: 3}}>„{question.optionOne.text} or {question.optionTwo.text}"</i>
-                            <Percentage mainVotes={question.optionOne.votes.length} restVotes={question.optionTwo.votes.length}/>
-                            <Grid container alignItems="center" justify="center">
-                                <GooglePieChart data={data}/>
-                                <Link to={`/`}>
-                                    <Button variant="contained" style={{marginBottom: 15, marginTop: 5}}>Go back!</Button>
-                                </Link>
-                            </Grid>
-                        </div>
-                    </div>
-                </Grid>
-            </Grid>
-            )
+            <div className="ui link cards">
+                <div className="card">
+                    <h3 style={{marginTop: 10}}>Voting Result</h3>
+                    <i style={{margin: 3}}>„{question.optionOne.text} or {question.optionTwo.text}"</i>
+                    <Percentage mainVotes={question.optionOne.votes.length}
+                                restVotes={question.optionTwo.votes.length}/>
+                    <Grid container alignItems="center" justify="center">
+                        <GooglePieChart data={data}/>
+                        <span><i style={{marginBottom: 5}}>Your choice: {choiceText}</i></span>
+                        <br/>
+                        <Link to={`/`}>
+                            <div className="extra content">
+                                <Button variant="contained" style={{marginBottom: 15, marginTop: 5}}>Go back!</Button>
+                            </div>
+                        </Link>
+                    </Grid>
+                </div>
+            </div>
+        )
     }
 }
 
-function mapStateToProps ({ questions, authedUser }, props) {
-    const { question_id } = props.match.params
-    const question = questions[question_id]
-
-    return { question,
-            authedUser }
+function mapStateToProps({users, authedUser}) {
+    return {
+        users,
+        authedUser
+    }
 }
 
 export default connect(mapStateToProps)(QuestionResult)

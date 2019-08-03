@@ -4,6 +4,7 @@ import {handleAddQuestion} from '../actions/questions'
 import {Redirect} from 'react-router-dom'
 import Button from "@material-ui/core/Button";
 
+
 class addQuestion extends Component {
     state = {
         answerOne: '',
@@ -75,4 +76,4 @@ class addQuestion extends Component {
     }
 }
 
-export default connect()(addQuestion)
+export default addQuestion

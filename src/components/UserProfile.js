@@ -2,11 +2,14 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom';
 
+
 class UserProfile extends Component {
 
     render() {
         const { users, user } = this.props
         const userProfile = users[user.id];
+
+        const sumOfAnswers = Object.values(userProfile.answers).length;
 
         return (
             <div className="ui link cards">
@@ -16,7 +19,7 @@ class UserProfile extends Component {
                     </div>
                     <div className="content">
                         <div className="header">{ userProfile.name }</div>
-                        <div className="meta">Total Score: { userProfile.totalScore }<br/>Questions made: { userProfile.questionsCreated }<br/>Questions answered: { userProfile.questionsAnswered }</div>
+                        <div className="meta">Total Score: { userProfile.questions.length + sumOfAnswers }<br/>Questions made: { userProfile.questions.length }<br/>Questions answered: { sumOfAnswers }</div>
                     </div>
                 </div>
             </div>
@@ -25,6 +28,7 @@ class UserProfile extends Component {
 }
 
 function mapStateToProps ({ authedUser, users }) {
+
     return {
         authedUser: authedUser,
         users: users,

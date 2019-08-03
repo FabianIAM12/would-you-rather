@@ -9,7 +9,8 @@ export default function questions (state = {}, action) {
                 ...action.questions
             };
         case VOTE_QUESTION :
-            const { authedUser, qid, answer } = action
+            const { authedUser, qid, answer } = action;
+
             return {
                 ...state,
                 [qid]: {
