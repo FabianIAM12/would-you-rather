@@ -12,7 +12,7 @@ export default function Nav() {
                 Add new Poll
             </NavLink>
             <NavLink to='/leaderboard' exact activeClassName='active' className='item'>
-                Highscore
+                Leaderboard
             </NavLink>
             <div className="right menu">
                 <div className="item">

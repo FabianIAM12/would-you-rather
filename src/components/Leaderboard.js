@@ -10,7 +10,7 @@ class Leaderboard extends Component {
         const {users} = this.props;
 
         return (
-            <div className='highscore'>
+            <div className='leaderboard'>
                 <h3>Leaderboard</h3>
                 <Grid container spacing={5} alignItems="center" justify="center">
                     {this.props.userIds.map((name) => (
