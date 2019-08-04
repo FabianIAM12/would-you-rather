@@ -12,6 +12,10 @@ class addQuestion extends Component {
         toHome: false,
     };
 
+    handleOptionChange = (e) => {
+        this.setState({[e.target.name]: e.target.value});
+    };
+
     handleChangeOne = (e) => {
         const text = e.target.value;
 
@@ -58,18 +62,19 @@ class addQuestion extends Component {
                 <form className='new-tweet' onSubmit={this.handleSubmit}>
                     <textarea placeholder="Question 1"
                               value={answerOne}
-                              onChange={this.handleChangeOne}
+                              name='answerOne'
+                              onChange={this.handleOptionChange}
                               className='textarea'
                     />
                     <br/>
                     <textarea placeholder="Question 2"
                               value={answerTwo}
-                              onChange={this.handleChangeTwo}
+                              name='answerTwo'
+                              onChange={this.handleOptionChange}
                               className='textarea'
                     />
                     <br/>
-                    <Button variant="contained" type='submit' disabled={answerOne === '' || answerTwo === ''}>Add
-                        Question!</Button>
+                    <Button variant="contained" type='submit' disabled={answerOne === '' || answerTwo === ''}>Add Question!</Button>
                 </form>
             </div>
         )
