@@ -44,8 +44,7 @@ export function handleAddQuestion(optionOneText, optionTwoText) {
         .then((question) => {
             dispatch(addQuestion(question))
             dispatch(addQuestionToUser(question, authedUser))
-        })
-        .then(() => hideLoading())
+        }).then(() => dispatch(hideLoading()))
     }
 }
 

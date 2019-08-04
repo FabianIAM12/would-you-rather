@@ -39,7 +39,7 @@ class QuestionDetail extends Component {
         let {showResult} = this.state;
 
         const notFoundUrl = '/questions/notexisting/';
-        if (question === undefined) {
+        if (!question) {
             return <Redirect to={notFoundUrl}/>
         }
 

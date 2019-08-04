@@ -15,9 +15,7 @@ class Logout extends Component {
 }
 
 function mapStateToProps({authedUser}) {
-    return {
-        authedUser: authedUser
-    }
+    return {authedUser}
 }
 
 export default connect(mapStateToProps)(Logout)

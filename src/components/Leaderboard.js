@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom'
 import UserProfile from "./UserProfile";
 import Grid from "@material-ui/core/Grid";
+import {sortBy} from "lodash";
 
 
 class Leaderboard extends Component {
@@ -25,11 +26,16 @@ class Leaderboard extends Component {
 }
 
 function mapStateToProps({authedUser, users}) {
-    const ordered = {};
-    Object.keys(users).sort().reverse().forEach(function (key) {
-        ordered[key] = users[key];
+    /* calc values for user profile */
+    Object.keys(users).map(user => {
+        const profile = users[user];
+        profile.questionsCreated = profile.questions.length;
+        profile.questionsAnswered = Object.values(profile.answers).length;
+        profile.totalScore = profile.questionsCreated + profile.questionsAnswered;
+        return profile;
     });
-    users = ordered;
+
+    users = sortBy(users, ['user', 'totalScore']).reverse();
 
     return {
         authedUser,

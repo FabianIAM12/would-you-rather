@@ -6,7 +6,6 @@ import Grid from "@material-ui/core/Grid";
 
 
 class QuestionOverview extends Component {
-
     render() {
         const {question, authedUser, users, hideVote, hideAuthor, showFullQuestion, showUserVote} = this.props;
 
