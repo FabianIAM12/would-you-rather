@@ -21,6 +21,4 @@ Run the Project with
 
 You will find it at
 
-``` npm start ```
-
 http://localhost:3000
